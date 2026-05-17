@@ -1,0 +1,14 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.20.xsd">
+
+<!-- Сначала address (на него ссылается contactes) -->
+    <include file="v001_2026-05/18/v1-3__create_address_table.sql" author="Yury Lapitski" relativeToChangelogFile="true"/>
+
+    <!-- Потом contactes (ссылается на address) -->
+    <include file="v001_2026-05/18/v1-2__create_contactes_table.sql" author="Yury Lapitski" relativeToChangelogFile="true"/>
+
+    <!-- Потом user (ссылается на contactes) -->
+    <include file="v001_2026-05/18/v1-1__create_user_table.sql" author="Yury Lapitski" relativeToChangelogFile="true"/>
+</databaseChangeLog>
