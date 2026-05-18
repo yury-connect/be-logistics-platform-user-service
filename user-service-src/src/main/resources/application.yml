@@ -48,7 +48,7 @@ spring:
       resourceserver:
         jwt:
           issuer-uri: http://localhost:8080/realms/logistics
-          jwk-set-uri: http://localhost:8080/realms/logistics/protocol/openid-connect/certs
+#          jwk-set-uri: http://localhost:8080/realms/logistics/protocol/openid-connect/certs
 
 logging:
   level:
