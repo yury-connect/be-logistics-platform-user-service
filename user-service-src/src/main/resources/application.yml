@@ -6,7 +6,7 @@ spring:
 
   # DataSource для PostgreSQL (основная БД)
   datasource:
-    url: jdbc:postgresql://localhost:5432/logistics_user_db
+    url: jdbc:postgresql://localhost:5432/postgres
     username: ${DB_USERNAME:postgres}
     password: ${DB_PASSWORD:postgres}
     driver-class-name: org.postgresql.Driver
@@ -16,6 +16,11 @@ spring:
       connection-timeout: 30000
       idle-timeout: 600000
       max-lifetime: 1800000
+
+  jackson:
+    serialization: # чтобы Jackson правильно сериализует/десериализует.
+      write-dates-as-timestamps: false
+    time-zone: UTC
 
   # JPA / Hibernate
   jpa:
@@ -28,13 +33,22 @@ spring:
         format_sql: true
         jdbc:
           batch_size: 20
+        default_schema: user_schema
     open-in-view: false
 
   liquibase:
     enabled: true
+#    enabled: false   # временно отключаем Liquibase
     change-log: classpath:db/changelog/db.changelog-master.xml
-    default-schema: public
+    default-schema: user_schema
 #    rollback-file: classpath:db/changelog/rollback.sql  # файл для SQL отката
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8080/realms/logistics
+          jwk-set-uri: http://localhost:8080/realms/logistics/protocol/openid-connect/certs
 
 logging:
   level:

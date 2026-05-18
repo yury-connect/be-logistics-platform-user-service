@@ -3,12 +3,16 @@
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.20.xsd">
 
-<!-- Сначала address (на него ссылается contactes) -->
-    <include file="v001_2026-05/18/v1-3__create_address_table.sql" author="Yury Lapitski" relativeToChangelogFile="true"/>
 
-    <!-- Потом contactes (ссылается на address) -->
-    <include file="v001_2026-05/18/v1-2__create_contactes_table.sql" author="Yury Lapitski" relativeToChangelogFile="true"/>
+    <!-- Версия 1.0.0: Основные таблицы User Service -->
 
-    <!-- Потом user (ссылается на contactes) -->
-    <include file="v001_2026-05/18/v1-1__create_user_table.sql" author="Yury Lapitski" relativeToChangelogFile="true"/>
+    <!-- address: changeset yury.lapitski:2026-05-18-001 -->
+    <include file="v001/v2-3__create_address_table.sql" author="Yury Lapitski" relativeToChangelogFile="true"/>
+
+    <!-- contacts: changeset yury.lapitski:2026-05-18-002 -->
+    <include file="v001/v2-2__create_contacts_table.sql" author="Yury Lapitski" relativeToChangelogFile="true"/>
+
+    <!-- users: changeset yury.lapitski:2026-05-18-003 -->
+    <include file="v001/v2-1__create_user_table.sql" author="Yury Lapitski" relativeToChangelogFile="true"/>
+
 </databaseChangeLog>

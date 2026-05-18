@@ -5,7 +5,7 @@
 CREATE TYPE user_role_enum AS ENUM ('ADMIN', 'BANK', 'MANAGER', 'USER', 'DRIVER');
 
 -- changeset author:2
-CREATE TABLE IF NOT EXISTS "user" (
+CREATE TABLE IF NOT EXISTS "users" (
     user_id BIGSERIAL PRIMARY KEY,
     keycloak_id UUID NOT NULL UNIQUE,
     first_name VARCHAR(50) NOT NULL,
@@ -19,10 +19,10 @@ CREATE TABLE IF NOT EXISTS "user" (
     created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMPTZ,
 
-    CONSTRAINT fk_user_contact FOREIGN KEY (contact_id) REFERENCES contactes(id)
+    CONSTRAINT fk_user_contact FOREIGN KEY (contact_id) REFERENCES contacts(id)
 );
 
 -- changeset author:3
-CREATE INDEX idx_user_keycloak_id ON "user"(keycloak_id);
-CREATE INDEX idx_user_contact_id ON "user"(contact_id);
-CREATE INDEX idx_user_user_role ON "user"(user_role);
+CREATE INDEX idx_user_keycloak_id ON "users"(keycloak_id);
+CREATE INDEX idx_user_contact_id ON "users"(contact_id);
+CREATE INDEX idx_user_user_role ON "users"(user_role);

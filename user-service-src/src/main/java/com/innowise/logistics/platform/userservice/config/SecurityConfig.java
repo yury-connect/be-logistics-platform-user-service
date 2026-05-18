@@ -6,17 +6,18 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.web.SecurityFilterChain;
 
+// Временно отключить Security (для разработки)
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
+
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/actuator/health").permitAll()
-                        .anyRequest().authenticated()
+                        .anyRequest().permitAll()  // разрешить всё
                 )
-                .oauth2ResourceServer(oauth2 -> oauth2.jwt());
+                .csrf(csrf -> csrf.disable());
         return http.build();
     }
 }
