@@ -6,7 +6,10 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.web.SecurityFilterChain;
 
-// Временно отключить Security (для разработки)
+/*
+Временно отключаю Security (для разработки)
+Создал временную конфигурацию, которая отключает Security.
+ */
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
